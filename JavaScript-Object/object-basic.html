@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>object-basic</title>
+</head>
+<script>
+  // 建立空白物件
+  let point = new Object();
+  // 建立物件的成員 (屬性與方法)
+  point.a = 3; // 物件中，只要不是函數，就被視為屬性
+  point.b = 8;
+  point.getPosition = function () { // 反之，函數在物件中，被視為方法
+    console.log(this.a + ' , ' + this.b);
+  }
+  // 使用物件
+  point.getPosition(); // 直接調用物件內的方法
+</script>
+<body>
+  
+</body>
+</html>
