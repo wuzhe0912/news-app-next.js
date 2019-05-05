@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>處理非同步：Promise</title>
+  <script>
+    // 2. server 開始取資料，並將結果回傳給當初的承諾
+    function getData () {
+      return new Promise(function(resolve, reject){ // 準備一個執行函數(具備立刻執行的特性)，並同時擁有成功和失敗兩種狀態
+        let req = new XMLHttpRequest()
+        req.open("get", "https://training.pada-x.com/resources/javascript-es6-react/data.out");
+        // ajax 的 onload 事件，接收成功的結果
+        req.onload = function () {
+          resolve(this.responseText)
+        };
+        // ajax 的 onerror 事件，接收失敗的結果
+        req.onerror = function () {
+          reject("Error");
+        }
+        req.send();
+      });
+    }
+    // 1. 我希望和 server 取得資料，但 server 傳送資料需要時間，所以我先宣告一個承諾(Promise)
+    let promise = getData();
+    // 3. 拿到承諾的資料後，我開始進行判斷，如果資料取得成功，則執行 then 方法內的內容，否則執行 catch 方法內的內容
+    // 常見寫法，使用 promise 的 then & catch 方法
+    promise.then((res) => {
+      console.log(res);
+    }).catch((error) => { // 使用 catch 接住錯誤的處理
+      console.log(error);
+    });
+
+    // 舊寫法，使用第二個函數接收 error
+    // promise.then(function(result){
+    //   console.log(result);
+    // }, function(error){
+    //   console.log(error);
+    // });
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

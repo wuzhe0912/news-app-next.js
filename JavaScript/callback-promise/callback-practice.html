@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>callback-practice</title>
+  <script>
+    // calculate 函式：延遲 3 秒鐘後，做加法
+    function calculate(n1, n2, callback){
+        window.setTimeout(function(){
+            let result = n1 + n2;
+            // 將 result 變數的資料，串接到主程式中
+            callback(result);
+        }, 1000);
+    }
+    // 主流程：呼叫 calculate 進行加法，但結果會延遲 3 秒鐘
+    calculate(3, 4, function(result){
+      console.log(result); 
+    });
+    console.log("等待 1 秒後，要在主流程中印出加法結果");
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

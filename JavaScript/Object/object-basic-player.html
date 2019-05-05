@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>object-basic-player</title>
+</head>
+<script>
+  // 遊戲中的玩家設計
+  let player = new Object;
+  player.name = "Pitt"; // 玩家為物件，玩家的名稱與血量可以理解為屬性
+  player.hp = 100;
+  // 玩家戰鬥的函數
+  player.fight = function() { // 函數在物件中被視為方法
+    console.log(this.name + "離開新手村，遭遇了第一隻史萊姆，進行了戰鬥")
+    this.hp = this.hp - 2; // 當玩家進行戰鬥時，每次扣除兩滴血量
+    console.log("戰鬥結束" + this.name + "血量剩下" + this.hp)
+  }
+  // 玩家休息回復生命值的函數
+  player.rest = function() {
+    console.log(this.name + "升起了篝火休息一會")
+    this.hp++; // 每次玩家休息回復一滴血
+    console.log(this.name + "的血量回復了")
+  }
+  // 玩家回報他當前的狀態
+  player.report = function() {
+    console.log("目前" + this.name + "的血量：" + this.hp)
+  }
+  // 物件的使用
+  player.fight();
+  player.rest();
+  player.report();
+</script>
+<body>
+</body>
+</html>
