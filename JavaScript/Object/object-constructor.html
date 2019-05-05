@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>object-basic-player</title>
+</head>
+<script>
+  // 透過建構式，彈性建立複數玩家
+  function Player (name, hp) { // constructor(建構式)中，首字大寫是書寫習慣
+    // this 代表新建立的物件
+    // 透過參數傳入不同玩家的名稱和血量
+    this.name = name;
+    this.hp = hp;
+    this.fight = function() {
+      console.log(this.name + "離開新手村，遭遇了第一隻史萊姆，進行了戰鬥")
+      this.hp = this.hp - 2;
+      console.log("戰鬥結束" + this.name + "血量剩下" + this.hp)
+    }
+      // 玩家休息回復生命值的函數
+    this.rest = function() {
+      console.log(this.name + "升起了篝火休息一會")
+      this.hp += 1; // 每次玩家休息回復一滴血
+      console.log(this.name + "的血量回復了")
+    }
+    // 玩家回報他當前的狀態
+    this.report = function() {
+      console.log("目前" + this.name + "的血量：" + this.hp)
+    }
+  }
+  // 建構式呼叫使用時，需在前方加上 new
+  let player = new Player("Pitt", 100);
+  player.fight();
+  player.report();
+  let player2 = new Player("NiNi", 95);
+  player2.fight();
+  player2.rest();
+  player2.report();
+</script>
+<body>
+</body>
+</html>
